@@ -17,10 +17,11 @@ allows you to load javascript on-demand (the first time it is used).
     $.do(":script", ...)
 
 ## Examples
-    <a href=# onclick='$.do("/js/test.js", "test", 1, "parf")'>$.do("url", "func", ..)</a><br>
-    <a href=# onclick='$.do(":test", "NS.test", "parf")'>$.do(":script", "Namespace.Function", ..)<br>
-    <a href=# onclick='$.do(":test", function() {test(1,2,3)} )'>$.do(":script", function)<br>
-    
+    <a href=# onclick='$.do("/js/test.js", "test", 1, "parf")'>$.do("url", "func", ..)</a>
+    <a href=# onclick='$.do(":test", "NS.test", "parf")'>$.do(":script", "Namespace.Function", ..)</a>
+    <a href=# onclick='$.do(":test", function() {test(1,2,3)} )'>$.do(":script", function)</a>
+   
+    <!-- ahmi (http://jqueryahm.com) is a big brother to jquery-do, it allows to call client javascript functions from server -->
     {"#test":"done","\/$.do":[":test","test",1,2,3,"parf"]}
     <a href="/dvp/parf/a.jquery-do-test" class="ahm">AHM</a> <span id="test"></span><br> 
     
