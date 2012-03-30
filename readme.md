@@ -4,7 +4,7 @@ Significantly speed up your pages! Load JS on-demand.
 
 Lazy load your javascripts. (the first time it requred).
 
-Once loaded scripts are cached. No loads on subsequence calls.
+Once loaded scripts are cached. No loads on subsequent calls.
 
 ## Usage
     // load script once, then call callback function
