@@ -1,10 +1,11 @@
 # What is jquery-do?
-Lazy load all your javascripts! jQuery-do is a powerful add-on to $.ajax that
-allows you to load javascript on-demand (the first time it is used).
+Significantly speed up your pages!
+Lazy load all your javascripts.
+Load javascript on-demand (the first time it requred). Once loaded scripts are cached.
 
 ## Features
 * lazy load javascript on-demand (the first time it is used)
-* cache previously loaded javascript (load only once)
+* cache previously loaded javascripts (load only once)
 
 ## Usage
     // pass a callback function
@@ -21,14 +22,15 @@ allows you to load javascript on-demand (the first time it is used).
     <a href=# onclick='$.do(":test", "NS.test", "parf")'>$.do(":script", "Namespace.Function", ..)</a>
     <a href=# onclick='$.do(":test", function() {test(1,2,3)} )'>$.do(":script", function)</a>
    
-    <!-- ahmi (http://jqueryahm.com) is a big brother to jquery-do, it allows to call client javascript functions from server -->
-    {"#test":"done","\/$.do":[":test","test",1,2,3,"parf"]}
-    <a href="/dvp/parf/a.jquery-do-test" class="ahm">AHM</a> <span id="test"></span><br> 
+    <!-- AHM ( http://jqueryahm.com/ ) lets you call client javascript functions from server -->
+    <a href="/dvp/parf/a.jquery-do-test" class="ahm">AHM</a><span id="test"></span>
+    Server response:
+    {"#test":"ahm call complete","\/$.do":[":test","test",1,2,3,"parf"]}
     
     /js/test.js
     function test() {
        console.log("test.js test(...)", arguments);
-    } 
+    }
     
     // namespace
     var NS = { 
@@ -38,12 +40,15 @@ allows you to load javascript on-demand (the first time it is used).
     }
 
 ## Future Development
-    $.do("file.html", ..) // load htmls, ...
+    $.do("file.html", ..) // load & execute scripts inside htmls
     $.do("file.css", ..) // load styles, ...
     $.do(["script", "file.html", "file.css"], ..) // load several files, then execute something
 
 ## Licence
 MIT License @ http://www.jqueryahm.com/license
+
+## See Also
+JqueryAHM - http://jqueryahm.com/ - jquery-do big brother - simplify your htmls/javascripts even more
 
 ## Requirements
 jQuery 1.5+
