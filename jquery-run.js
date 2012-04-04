@@ -20,10 +20,12 @@ $.extend({
         if (typeof callback !== 'function') {
             var namespace = window;
             var cb = callback;
-            if (callback.indexOf("$.") != -1) {
-                namespace = jQuery;
-                cb = callback.substring(2);
+            var i = callback.indexOf(".");
+            if (i != -1) {
+                namespace = window[callback.substr(0, i)];
+                callback = callback.substr(i);
             }
+
             callback = function() {
                 namespace[cb].apply(namespace, args);
             };
