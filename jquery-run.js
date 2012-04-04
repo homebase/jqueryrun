@@ -23,9 +23,8 @@ $.extend({
             var i = callback.indexOf(".");
             if (i != -1) {
                 namespace = window[callback.substr(0, i)];
-                callback = callback.substr(i);
+                cb = callback.substr(i+1);
             }
-
             callback = function() {
                 namespace[cb].apply(namespace, args);
             };
