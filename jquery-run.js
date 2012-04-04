@@ -4,12 +4,12 @@
  * @author    Sergey <parf@comfi.com>
  * @copyright 2011 Comfi.com, Sergey Porfiriev
  * @license   MIT License: http://www.jqueryahm.com/license
- * @version   1.0.0
+ * @version   1.1.0
  * @requires  jQuery 1.5+
  */
 $.extend({
-    'do_loaded': [],
-    'do': function(/* url, callback, params, .. */) {
+    'run_loaded': [],
+    'run': function(/* url, callback, params, .. */) {
         var args = [].slice.apply(arguments); // convert arguments to Array
         var url = args.shift();
         var callback = args.shift();
@@ -18,18 +18,23 @@ $.extend({
             url = "/js/" + url.substring(1) + ".js";
 
         if (typeof callback !== 'function') {
+            var namespace = window;
             var cb = callback;
+            if (callback.indexOf("$.") != -1) {
+                namespace = jQuery;
+                cb = callback.substring(2);
+            }
             callback = function() {
-                eval(cb).apply(window, args);
+                namespace[cb].apply(namespace, args);
             };
         }
 
-        if ($.do_loaded.indexOf(url) > -1) {
+        if ($.inArray(url, $.run_loaded) != -1) {
             callback();
             return;
         }
 
-        $.do_loaded.push(url);
+        $.run_loaded.push(url);
         $.getScript(url).done(callback);
     }
 });
