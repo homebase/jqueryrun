@@ -26,7 +26,10 @@ $.extend({
                     namespace = window[cb.substr(0, i)];
                     cb = cb.substr(i+1);
                 }
-                namespace[cb].apply(namespace, args);
+                if (typeof namespace[cb]['apply'] === 'function')
+                    namespace[cb]['apply'](namespace, args);
+                else
+                    namespace[cb](args[0]); // no support for apply() (multiple params)
             };
         }
 
